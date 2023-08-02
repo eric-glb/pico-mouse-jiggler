@@ -18,7 +18,6 @@ led.direction = Direction.OUTPUT
 
 # Start as soon as plugged
 active = 1
-button_press = 1
 
 # Other variables
 time_interval = 2
@@ -40,14 +39,12 @@ while True:
     if button.value == False and active == 0:
         print("Turning on")
         active = 1
-        button_press = 1
         blink()
-    elif button.value == False and active == 1 and button_press == 1:
+    elif button.value == False and active == 1:
         print("Turning off")
         active = 0
-        button_press = 0
         blink()
-    elif button.value == True and active == 1 and button_press == 1:
+    elif button.value == True and active == 1:
         time_elapsed = time.monotonic() - time_last_fired
         if time_elapsed > time_interval:
             if led.value:
